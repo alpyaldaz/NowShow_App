@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Configuration Screen -->
+        <div id="configScreen" class="screen active">
+            <h2>Quiz Configuration</h2>
+            
+            <!-- Player and Time Settings -->
+            <div class="config-section">
+                <label>
+                    Number of Players:
+                    <input type="number" id="playerCount" >
+                </label>
+                <label>
+                    Time per Question:
+                    <input type="number" id="timePerQuestion" >
+                </label>
+            </div>
+
+            <!-- Add Question -->
+            <div class="config-section">
+                <h3>Add Question:</h3>
+                <input type="text" id="questionInput" placeholder="Enter question">
+                <input type="text" id="answerInput" placeholder="Enter answer">
+                <button onclick="addQuestion()" class="btn">Add Question</button>
+            </div>
+
+            <!-- Bulk Import -->
+            <div class="config-section">
+                <h3>Bulk Import Questions:</h3>
+                <textarea id="bulkImport" rows="4" placeholder='[{"question": "What is 2+2?", "answer": "4"}]'></textarea>
+                <button onclick="importQuestions()" class="btn">Import Questions</button>
+            </div>
+
+            <!-- Question List -->
+            <div id="questionList" class="question-list">
+                <!-- Questions will be listed here -->
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="button-group">
+                <button onclick="startShow()" class="btn">Start Show</button>
+                <button onclick="exportQuestions()" class="btn">Export Questions</button>
+                <button onclick="resetQuiz()" class="btn">Reset All</button>
+            </div>
+        </div>
+
+        <!-- Splash Screen -->
+        <div id="splashScreen" class="screen">
+            <h1>Welcome to Quiz Show!</h1>
+            <div class="splash-content">
+                <button onclick="showPlayersScreen()" class="btn">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Players Screen -->
+        <div id="playersScreen" class="screen">
+            <h2>Players</h2>
+            <div id="playerScores">
+                <!-- Player scores will be displayed here -->
+            </div>
+            <h3>Select Next Player:</h3>
+            <div id="playerSelection">
+                <!-- Player selection buttons will be here -->
+            </div>
+            <div class="button-group">
+                <button onclick="showSelectionScreen()" class="btn">Next Question</button>
+                <button onclick="backToMenu()" class="btn menu-btn">Back to Menu</button>
+            </div>
+        </div>
+
+        <!-- Question Selection Screen -->
+        <div id="selectionScreen" class="screen">
+            <h2>Select a Question</h2>
+            <div id="availableQuestions">
+                <!-- Available questions will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Question Display Screen -->
+        <div id="questionScreen" class="screen">
+            <h2>Current Question</h2>
+            <div id="currentQuestion" class="question-display"></div>
+            <div id="timer" class="timer"></div>
+            
+            <div class="button-group">
+                <button onclick="showAnswer()" class="btn show-btn">Show Answer</button>
+                <button onclick="returnToPlayers()" class="btn return-btn">Return to Players</button>
+            </div>
+
+            <div id="answerSection" class="answer-section" style="display: none;">
+                <h3>Answer:</h3>
+                <div id="currentAnswer" class="answer-display"></div>
+                <div class="button-group">
+                    <button onclick="awardPoints()" class="btn award-btn">Award Points</button>
+                    <button onclick="nextPlayer()" class="btn next-btn">Next Player</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="appsettings.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
